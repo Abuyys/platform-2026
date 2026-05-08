@@ -25,7 +25,7 @@ class OrangtuaPanelProvider extends PanelProvider
         return $panel
             ->id('orangtua')
             ->path('orangtua')
-            ->login()
+            ->login(null)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -52,6 +52,7 @@ class OrangtuaPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\EnsureUserHasPanelRole::class,
             ]);
     }
 }

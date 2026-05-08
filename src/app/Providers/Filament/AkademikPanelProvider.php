@@ -25,7 +25,7 @@ class AkademikPanelProvider extends PanelProvider
         return $panel
             ->id('akademik')
             ->path('akademik')
-            ->login()
+            ->login(null)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -52,6 +52,7 @@ class AkademikPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\EnsureUserHasPanelRole::class,
             ]);
     }
 }
